@@ -12,14 +12,14 @@ import argparse
 
 # --- Argument Parser ---
 parser = argparse.ArgumentParser(description="Fine-tune a model with a given dataset.")
-parser.add_argument("--dataset_path", type=str, default="training/data/dataset.json", help="Path to the dataset.")
+parser.add_argument("--dataset_path", type=str, default="training/checkmk/data/dataset.json", help="Path to the dataset.")
 args = parser.parse_args()
 
 # You can substitute this with a Hugging Face identifier for gemma3:270m if available
 # For now, we'll use a known-good small model.
 MODEL_NAME = "google/gemma-2-9b-it"
 DATASET_PATH = args.dataset_path # Your new dataset
-OUTPUT_DIR = "./adapters/checkmk-lora-adapter" # The output directory for your trained model
+OUTPUT_DIR = "training/checkmk/adapters/checkmk-lora-adapter" # The output directory for your trained model
 
 # --- Optimizations for A100 ---
 torch.backends.cuda.matmul.allow_tf32 = True
