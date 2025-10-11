@@ -5,11 +5,11 @@ from cryptography.fernet import Fernet
 
 # --- Settings and Encryption ---
 def load_settings():
-    with open("servers/checkmk/settings.yaml", "r") as f:
+    with open("mcp/checkmk/settings.yaml", "r") as f:
         return yaml.safe_load(f)
 
 def load_key():
-    return open("servers/checkmk/key.key", "rb").read()
+    return open("mcp/checkmk/key.key", "rb").read()
 
 def decrypt_message(encrypted_message):
     key = load_key()

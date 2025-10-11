@@ -6,7 +6,7 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
 
 ```
 /
-├── servers/
+├── mcp/
 │   └── checkmk/
 │       ├── checkmk_mcp_server.py
 │       ├── checkmk_mcp_client.py
@@ -22,7 +22,7 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
             └── checkmk-lora-adapter/
 ```
 
-- **servers/**: Contains the MCP servers.
+- **mcp/**: Contains the MCP servers.
   - **checkmk/**: An MCP server for interacting with a Checkmk monitoring instance.
     - `checkmk_mcp_server.py`: The main server script.
     - `checkmk_mcp_client.py`: A client to interact with the Checkmk MCP server and an LLM.
@@ -66,6 +66,6 @@ uv pip install -r requirements.txt
 
 For information on how to use the different components of this repository, please refer to the `README.md` files in the respective directories:
 
-- [servers/checkmk](servers/checkmk)
+- [mcp/checkmk](mcp/checkmk)
 - [training/checkmk](training/checkmk)
 
