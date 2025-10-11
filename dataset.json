@@ -1,0 +1,2330 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hey, can you list all the hosts you are monitoring?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Show me a list of all my servers."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the status of the host named 'web-prod-01'?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is 'database-main' doing?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"database-main\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check the status of the 'HTTP' service on 'web-prod-01'."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-01\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "On the server 'database-main', what is the status of the 'PostgreSQL' service?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"database-main\", \"service_description\": \"PostgreSQL\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about the CPU load on the main database."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"database-main\", \"service_description\": \"CPU load\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello there!"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! How can I help you with your Checkmk monitoring today?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Thanks for the help."
+      },
+      {
+        "role": "assistant",
+        "content": "You're welcome!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you give me a list of all the machines?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What servers are being monitored?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Show all hosts."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the status of 'api-gateway-prod'?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"api-gateway-prod\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me the state of host 'data-processing-worker-3'."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"data-processing-worker-3\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is 'backup-server-01' online?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"backup-server-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check 'SSH' on 'bastion-host'."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"bastion-host\", \"service_description\": \"SSH\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with 'Memory Usage' on 'redis-cache-1'?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"redis-cache-1\", \"service_description\": \"Memory Usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the 'Web Server' service running on 'web-prod-02'?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-02\", \"service_description\": \"Web Server\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Good morning."
+      },
+      {
+        "role": "assistant",
+        "content": "Good morning! How can I assist you with Checkmk today?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Bye."
+      },
+      {
+        "role": "assistant",
+        "content": "Goodbye!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you fetch me the host list?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Pull up the host list."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "List all hosts."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Show me all the servers."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Enumerate all hosts."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me a list of every host."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "All hosts, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I need a list of all hosts."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What servers are you watching?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Display all monitored machines."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Get all hosts for me."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can I see all the hosts?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_hosts\", \"arguments\": {}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me the health of search-engine-cluster-node-a."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"search-engine-cluster-node-a\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How's load-balancer-main?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"load-balancer-main\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up with mq-server-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"mq-server-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about load-balancer-main."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"load-balancer-main\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is git-server-internal doing?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"git-server-internal\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of web-prod-02, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Provide status for kubernetes-node-1."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the status of api-gateway-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"api-gateway-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I need the status of data-pipeline-worker-1."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"data-pipeline-worker-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status for analytics-02."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status for login-service-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"login-service-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status for analytics-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of web-prod-01, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check host cache-02."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"cache-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status for mq-server-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"mq-server-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I need the status of db-main-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"db-main-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me the health of web-prod-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the current state of analytics-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you check on api-gateway-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"api-gateway-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Provide status for web-staging-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-staging-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the current state of search-engine-cluster-node-a?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"search-engine-cluster-node-a\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check host web-prod-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up with web-prod-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of analytics-02, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I need the status of kubernetes-node-1."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is analytics-02 online?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up with load-balancer-main?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"load-balancer-main\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is web-staging-01 doing?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-staging-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is kubernetes-node-1 doing?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the status of load-balancer-main?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"load-balancer-main\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is db-main-01 online?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"db-main-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you check on cache-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"cache-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of db-replica-01, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"db-replica-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of api-gateway-01, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"api-gateway-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the current state of mq-server-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"mq-server-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up with analytics-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of data-pipeline-worker-1, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"data-pipeline-worker-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you check on web-prod-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How's analytics-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is login-service-01 online?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"login-service-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the current state of mq-server-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"mq-server-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the current state of web-staging-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-staging-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about api-gateway-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"api-gateway-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the current state of kubernetes-node-1?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status for api-gateway-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"api-gateway-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status for kubernetes-node-1."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Provide status for payment-service-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"payment-service-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up with mq-server-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"mq-server-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me the health of load-balancer-main."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"load-balancer-main\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up with analytics-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you check on analytics-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"analytics-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Provide status for db-replica-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"db-replica-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of kubernetes-node-1, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you check on mq-server-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"mq-server-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Provide status for mq-server-02."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"mq-server-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the current state of git-server-internal?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"git-server-internal\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is load-balancer-main up?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"load-balancer-main\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you check on kubernetes-node-1?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status for web-staging-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-staging-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up with kubernetes-node-1?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you check on git-server-internal?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"git-server-internal\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is db-replica-01 up?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"db-replica-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Provide status for web-prod-02."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"web-prod-02\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How's payment-service-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_host_status\", \"arguments\": {\"host_name\": \"payment-service-01\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I want to know about Ping on analytics-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-01\", \"service_description\": \"Ping\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for Nginx on api-gateway-01, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-01\", \"service_description\": \"Nginx\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the Python application on mq-server-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-01\", \"service_description\": \"Python application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the Memory usage service behaving on mq-server-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-02\", \"service_description\": \"Memory usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for SSH on cache-01, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-01\", \"service_description\": \"SSH\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I want to know about MySQL on mq-server-02."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-02\", \"service_description\": \"MySQL\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you report on DNS resolution for api-gateway-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-02\", \"service_description\": \"DNS resolution\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the HTTP on api-gateway-02 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-02\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the Disk usage on load-balancer-main?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"load-balancer-main\", \"service_description\": \"Disk usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for PostgreSQL on cache-02, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-02\", \"service_description\": \"PostgreSQL\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about the Custom Check 1 service's health on load-balancer-main."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"load-balancer-main\", \"service_description\": \"Custom Check 1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check service HTTP for host db-main-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"db-main-01\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with SMTP on analytics-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-01\", \"service_description\": \"SMTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of Disk usage at kubernetes-node-1?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\", \"service_description\": \"Disk usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is HTTPS on kubernetes-node-1 okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\", \"service_description\": \"HTTPS\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the HTTPS on web-prod-02 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-02\", \"service_description\": \"HTTPS\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the CPU load on mq-server-02 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-02\", \"service_description\": \"CPU load\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about the Nginx service's health on db-main-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"db-main-01\", \"service_description\": \"Nginx\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is Memory usage on analytics-02 okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-02\", \"service_description\": \"Memory usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check service IMAP for host db-replica-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"db-replica-01\", \"service_description\": \"IMAP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check the Memory usage service on web-prod-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-01\", \"service_description\": \"Memory usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is IMAP on web-staging-01 okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-staging-01\", \"service_description\": \"IMAP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check service Ping for host login-service-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"login-service-01\", \"service_description\": \"Ping\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check service Python application for host db-main-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"db-main-01\", \"service_description\": \"Python application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status of PostgreSQL on cache-02."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-02\", \"service_description\": \"PostgreSQL\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with Redis on cache-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-01\", \"service_description\": \"Redis\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the Redis service behaving on cache-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-02\", \"service_description\": \"Redis\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you report on Python application for web-prod-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-02\", \"service_description\": \"Python application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the Python application on api-gateway-02 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-02\", \"service_description\": \"Python application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the HTTPS service behaving on data-pipeline-worker-1?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"data-pipeline-worker-1\", \"service_description\": \"HTTPS\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is HTTP on cache-02 okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-02\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the IMAP on api-gateway-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-02\", \"service_description\": \"IMAP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status of MySQL on mq-server-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-01\", \"service_description\": \"MySQL\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you report on IMAP for mq-server-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-02\", \"service_description\": \"IMAP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status of Systemd Service Check on data-pipeline-worker-1."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"data-pipeline-worker-1\", \"service_description\": \"Systemd Service Check\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check the Systemd Service Check service on git-server-internal."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"git-server-internal\", \"service_description\": \"Systemd Service Check\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check service IMAP for host cache-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-01\", \"service_description\": \"IMAP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the status of the SMTP service on git-server-internal?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"git-server-internal\", \"service_description\": \"SMTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the Disk usage on payment-service-01 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"payment-service-01\", \"service_description\": \"Disk usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about the HTTP for data-pipeline-worker-1."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"data-pipeline-worker-1\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of Nginx at db-main-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"db-main-01\", \"service_description\": \"Nginx\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the SSH on analytics-02 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-02\", \"service_description\": \"SSH\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with Disk usage on web-staging-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-staging-01\", \"service_description\": \"Disk usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the status of the HTTPS service on data-pipeline-worker-1?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"data-pipeline-worker-1\", \"service_description\": \"HTTPS\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is Ping on load-balancer-main okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"load-balancer-main\", \"service_description\": \"Ping\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the status of the Apache service on login-service-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"login-service-01\", \"service_description\": \"Apache\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about the Redis service's health on db-replica-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"db-replica-01\", \"service_description\": \"Redis\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status of Redis on web-prod-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-01\", \"service_description\": \"Redis\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about the Nginx for payment-service-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"payment-service-01\", \"service_description\": \"Nginx\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for HTTPS on analytics-02, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-02\", \"service_description\": \"HTTPS\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check the HTTPS service on login-service-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"login-service-01\", \"service_description\": \"HTTPS\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for Python application on analytics-01, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-01\", \"service_description\": \"Python application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with Redis on mq-server-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-02\", \"service_description\": \"Redis\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with Apache on git-server-internal?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"git-server-internal\", \"service_description\": \"Apache\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for RabbitMQ on web-staging-01, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-staging-01\", \"service_description\": \"RabbitMQ\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for IMAP on kubernetes-node-1, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"kubernetes-node-1\", \"service_description\": \"IMAP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check the HTTP service on web-prod-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-01\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the IMAP on cache-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-01\", \"service_description\": \"IMAP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you report on Apache for analytics-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-01\", \"service_description\": \"Apache\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is HTTP on api-gateway-02 okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-02\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Service status for Nginx on mq-server-02, please."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"mq-server-02\", \"service_description\": \"Nginx\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is Custom Check 1 on analytics-02 okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-02\", \"service_description\": \"Custom Check 1\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is SMTP on login-service-01 okay?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"login-service-01\", \"service_description\": \"SMTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of CPU load at analytics-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"analytics-01\", \"service_description\": \"CPU load\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I want to know about HTTP on db-replica-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"db-replica-01\", \"service_description\": \"HTTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check service Ping for host data-pipeline-worker-1."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"data-pipeline-worker-1\", \"service_description\": \"Ping\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the DNS resolution on payment-service-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"payment-service-01\", \"service_description\": \"DNS resolution\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with SSH on cache-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-02\", \"service_description\": \"SSH\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the deal with SMTP on git-server-internal?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"git-server-internal\", \"service_description\": \"SMTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Give me the status of Memory usage on cache-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-01\", \"service_description\": \"Memory usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you report on Python application for api-gateway-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-02\", \"service_description\": \"Python application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Status of Systemd Service Check at cache-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-01\", \"service_description\": \"Systemd Service Check\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the MySQL on api-gateway-02 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-02\", \"service_description\": \"MySQL\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tell me about the Java application for cache-02."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-02\", \"service_description\": \"Java application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I want to know about SMTP on api-gateway-01."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"api-gateway-01\", \"service_description\": \"SMTP\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the Python application service behaving on payment-service-01?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"payment-service-01\", \"service_description\": \"Python application\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How is the SSH service behaving on web-prod-02?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"web-prod-02\", \"service_description\": \"SSH\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the Disk usage on git-server-internal running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"git-server-internal\", \"service_description\": \"Disk usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Is the Disk usage on cache-02 running properly?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\"tool_calls\": [{\"name\": \"get_service_status\", \"arguments\": {\"host_name\": \"cache-02\", \"service_description\": \"Disk usage\"}}]}"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Howdy"
+      },
+      {
+        "role": "assistant",
+        "content": "Howdy! What can I get for you?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Howdy"
+      },
+      {
+        "role": "assistant",
+        "content": "Good evening! How can I help you?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Not much! How can I help you with Checkmk?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Good evening"
+      },
+      {
+        "role": "assistant",
+        "content": "Good morning! How can I assist you with Checkmk today?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Greetings"
+      },
+      {
+        "role": "assistant",
+        "content": "Howdy! What can I get for you?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! How can I help you with your Checkmk monitoring today?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Good afternoon"
+      },
+      {
+        "role": "assistant",
+        "content": "Good evening! How can I help you?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Good evening"
+      },
+      {
+        "role": "assistant",
+        "content": "Yo! What's up?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's up?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hey there! How can I help?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Good morning"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! How can I help you with your Checkmk monitoring today?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quit"
+      },
+      {
+        "role": "assistant",
+        "content": "You're welcome! Goodbye!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Exit"
+      },
+      {
+        "role": "assistant",
+        "content": "Have a great day!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Thank you, bye"
+      },
+      {
+        "role": "assistant",
+        "content": "Goodbye!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Later"
+      },
+      {
+        "role": "assistant",
+        "content": "See you later!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "See you later"
+      },
+      {
+        "role": "assistant",
+        "content": "Goodbye!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Thank you, bye"
+      },
+      {
+        "role": "assistant",
+        "content": "See you later!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quit"
+      },
+      {
+        "role": "assistant",
+        "content": "See you later!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I'm done"
+      },
+      {
+        "role": "assistant",
+        "content": "You're welcome! Goodbye!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "See you later"
+      },
+      {
+        "role": "assistant",
+        "content": "Come back soon!"
+      }
+    ]
+  }
+]
