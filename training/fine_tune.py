@@ -17,20 +17,24 @@ args = parser.parse_args()
 
 # You can substitute this with a Hugging Face identifier for gemma3:270m if available
 # For now, we'll use a known-good small model.
-MODEL_NAME = "google/gemma-3-270m-it" 
+MODEL_NAME = "google/gemma-2-9b-it"
 DATASET_PATH = args.dataset_path # Your new dataset
 OUTPUT_DIR = "./adapters/checkmk-lora-adapter" # The output directory for your trained model
 
+# --- Optimizations for A100 ---
+torch.backends.cuda.matmul.allow_tf32 = True
+torch.backends.cudnn.allow_tf32 = True
+
 # --- Configuration ---
+quantization_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.bfloat16)
+
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 
-
-
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
-
-
+    quantization_config=quantization_config,
+    attn_implementation="flash_attention_2",
     trust_remote_code=True
 )
 
@@ -62,11 +66,12 @@ trainer = SFTTrainer(
     args=TrainingArguments(
         output_dir=OUTPUT_DIR,
         num_train_epochs=5, # You might need more epochs for a small dataset
-        per_device_train_batch_size=4,
+        per_device_train_batch_size=8,
         gradient_accumulation_steps=1,
         learning_rate=2e-4,
         logging_steps=10,
-
+        bf16=True,
+        optim="paged_adamw_8bit",
     ),
 )
 
