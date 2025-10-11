@@ -37,3 +37,12 @@ Once you have completed the configuration, you can run the server from the root 
 ```bash
 uv python servers/checkmk/checkmk_mcp.py
 ```
+
+## Running the Client
+
+To run the client, first make sure you have an Ollama server running.
+Then, from the root of the repository, run the client:
+
+```bash
+uv python servers/checkmk/checkmk_mcp_client.py
+```
