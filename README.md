@@ -68,7 +68,7 @@ export CHECKMK_PASSWORD="your_password"
 Then, run the server:
 
 ```bash
-python3 servers/checkmk/server.py
+uv python servers/checkmk/server.py
 ```
 
 ### Fine-Tuning a Model
@@ -76,7 +76,7 @@ python3 servers/checkmk/server.py
 To fine-tune a model, run the `fine_tune.py` script. You can specify the dataset path using the `--dataset_path` argument.
 
 ```bash
-python3 training/checkmk/fine_tune.py --dataset_path /path/to/your/dataset.json
+uv python training/checkmk/fine_tune.py --dataset_path /path/to/your/dataset.json
 ```
 
 If no dataset path is provided, it will use the default path: `training/checkmk/data/dataset.json`.
