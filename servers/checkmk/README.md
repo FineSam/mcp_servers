@@ -38,6 +38,52 @@ Once you have completed the configuration, you can run the server from the root 
 uv python servers/checkmk/checkmk_mcp.py
 ```
 
+## Installing Ollama
+
+The client uses Ollama to run the large language model locally. You can find more information about Ollama on their website: [https://ollama.ai/](https://ollama.ai/)
+
+### Installation
+
+To install Ollama on Linux, run the following command:
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+### Systemd Service
+
+To run Ollama as a systemd service, create a file named `ollama.service` in `/etc/systemd/system/` with the following content:
+
+```ini
+[Unit]
+Description=Ollama Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then, create the `ollama` user and group:
+
+```bash
+sudo useradd -r -s /bin/false -m -d /usr/share/ollama ollama
+```
+
+Finally, enable and start the service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable ollama
+sudo systemctl start ollama
+```
+
 ## Running the Client
 
 To run the client, first make sure you have an Ollama server running.
