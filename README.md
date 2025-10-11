@@ -8,11 +8,11 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
 /
 ├── servers/
 │   └── checkmk/
-│       ├── server.py
-│       └── data/
-│           └── dataset.json
+│       └── server.py
 └── training/
     ├── fine_tune.py
+    ├── data/
+    │   └── dataset.json
     └── adapters/
         └── checkmk-lora-adapter/
 ```
@@ -20,9 +20,9 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
 - **servers/**: Contains the MCP servers.
   - **checkmk/**: An MCP server for interacting with a Checkmk monitoring instance.
     - `server.py`: The main server script.
-    - `data/dataset.json`: The dataset used for fine-tuning the model for the Checkmk server.
 - **training/**: Contains the scripts and resources for fine-tuning models.
   - `fine_tune.py`: The script to fine-tune a model.
+  - `data/dataset.json`: The dataset used for fine-tuning the model.
   - `adapters/`: The output directory for the trained model adapters.
 
 ## Installation
@@ -77,7 +77,7 @@ To fine-tune a model, run the `fine_tune.py` script. You can specify the dataset
 python3 training/fine_tune.py --dataset_path /path/to/your/dataset.json
 ```
 
-If no dataset path is provided, it will use the default path: `servers/checkmk/data/dataset.json`.
+If no dataset path is provided, it will use the default path: `training/data/dataset.json`.
 
 The script is optimized for running on an NVIDIA A100 GPU.
 

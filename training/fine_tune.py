@@ -12,7 +12,7 @@ import argparse
 
 # --- Argument Parser ---
 parser = argparse.ArgumentParser(description="Fine-tune a model with a given dataset.")
-parser.add_argument("--dataset_path", type=str, default="../servers/checkmk/data/dataset.json", help="Path to the dataset.")
+parser.add_argument("--dataset_path", type=str, default="training/data/dataset.json", help="Path to the dataset.")
 args = parser.parse_args()
 
 # You can substitute this with a Hugging Face identifier for gemma3:270m if available
