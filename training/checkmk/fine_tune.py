@@ -13,13 +13,23 @@ import argparse
 # --- Argument Parser ---
 parser = argparse.ArgumentParser(description="Fine-tune a model with a given dataset.")
 parser.add_argument("--dataset_path", type=str, default="training/checkmk/data/dataset.json", help="Path to the dataset.")
+parser.add_argument("--model_name", type=str, default="google/gemma-2-9b-it", help="The name of the LLM model to fine-tune.")
+parser.add_argument("--output_dir", type=str, default="training/checkmk/adapters/checkmk-lora-adapter", help="The directory to save the trained model adapter.")
+parser.add_argument("--num_train_epochs", type=int, default=5, help="The number of training epochs.")
+parser.add_argument("--learning_rate", type=float, default=2e-4, help="The learning rate.")
+parser.add_argument("--per_device_train_batch_size", type=int, default=8, help="The batch size per device for training.")
+parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help="The number of gradient accumulation steps.")
+parser.add_argument("--logging_steps", type=int, default=10, help="The number of logging steps.")
+parser.add_argument("--lora_r", type=int, default=16, help="The r value for LoraConfig.")
+parser.add_argument("--lora_alpha", type=int, default=32, help="The alpha value for LoraConfig.")
+parser.add_argument("--lora_dropout", type=float, default=0.05, help="The dropout value for LoraConfig.")
 args = parser.parse_args()
 
 # You can substitute this with a Hugging Face identifier for gemma3:270m if available
 # For now, we'll use a known-good small model.
-MODEL_NAME = "google/gemma-2-9b-it"
+MODEL_NAME = args.model_name
 DATASET_PATH = args.dataset_path # Your new dataset
-OUTPUT_DIR = "training/checkmk/adapters/checkmk-lora-adapter" # The output directory for your trained model
+OUTPUT_DIR = args.output_dir # The output directory for your trained model
 
 # --- Optimizations for A100 ---
 torch.backends.cuda.matmul.allow_tf32 = True
@@ -39,10 +49,10 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 
 lora_config = LoraConfig(
-    r=16,
-    lora_alpha=32,
+    r=args.lora_r,
+    lora_alpha=args.lora_alpha,
     target_modules=["q_proj", "v_proj"],
-    lora_dropout=0.05,
+    lora_dropout=args.lora_dropout,
     bias="none",
     task_type="CAUSAL_LM",
 )
@@ -65,11 +75,11 @@ trainer = SFTTrainer(
 
     args=TrainingArguments(
         output_dir=OUTPUT_DIR,
-        num_train_epochs=5, # You might need more epochs for a small dataset
-        per_device_train_batch_size=8,
-        gradient_accumulation_steps=1,
-        learning_rate=2e-4,
-        logging_steps=10,
+        num_train_epochs=args.num_train_epochs, # You might need more epochs for a small dataset
+        per_device_train_batch_size=args.per_device_train_batch_size,
+        gradient_accumulation_steps=args.gradient_accumulation_steps,
+        learning_rate=args.learning_rate,
+        logging_steps=args.logging_steps,
         bf16=True,
         optim="paged_adamw_8bit",
     ),
