@@ -35,7 +35,7 @@ Before running the server, make sure you have completed the installation steps i
 Once you have completed the configuration, you can run the server from the root of the repository:
 
 ```bash
-uv python servers/checkmk/checkmk_mcp.py
+uv python servers/checkmk/checkmk_mcp_server.py
 ```
 
 ## Installing Ollama
