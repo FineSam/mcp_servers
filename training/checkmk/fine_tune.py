@@ -1,3 +1,4 @@
+import argparse
 import torch
 from datasets import load_dataset
 from peft import LoraConfig
@@ -8,84 +9,97 @@ from transformers import (
     TrainingArguments,
 )
 from trl import SFTTrainer
-import argparse
 
-# --- Argument Parser ---
-parser = argparse.ArgumentParser(description="Fine-tune a model with a given dataset.")
-parser.add_argument("--dataset_path", type=str, default="training/checkmk/data/dataset.json", help="Path to the dataset.")
-parser.add_argument("--model_name", type=str, default="google/gemma-2-9b-it", help="The name of the LLM model to fine-tune.")
-parser.add_argument("--output_dir", type=str, default="training/checkmk/adapters/checkmk-lora-adapter", help="The directory to save the trained model adapter.")
-parser.add_argument("--num_train_epochs", type=int, default=5, help="The number of training epochs.")
-parser.add_argument("--learning_rate", type=float, default=2e-4, help="The learning rate.")
-parser.add_argument("--per_device_train_batch_size", type=int, default=8, help="The batch size per device for training.")
-parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help="The number of gradient accumulation steps.")
-parser.add_argument("--logging_steps", type=int, default=10, help="The number of logging steps.")
-parser.add_argument("--lora_r", type=int, default=16, help="The r value for LoraConfig.")
-parser.add_argument("--lora_alpha", type=int, default=32, help="The alpha value for LoraConfig.")
-parser.add_argument("--lora_dropout", type=float, default=0.05, help="The dropout value for LoraConfig.")
-args = parser.parse_args()
+def parse_arguments():
+    """Parses command-line arguments."""
+    parser = argparse.ArgumentParser(description="Fine-tune a model with a given dataset.")
+    parser.add_argument("--dataset_path", type=str, default="training/checkmk/data/dataset.json", help="Path to the dataset.")
+    parser.add_argument("--model_name", type=str, default="google/gemma-2-9b-it", help="The name of the LLM model to fine-tune.")
+    parser.add_argument("--output_dir", type=str, default="training/checkmk/adapters/checkmk-lora-adapter", help="The directory to save the trained model adapter.")
+    parser.add_argument("--num_train_epochs", type=int, default=5, help="The number of training epochs.")
+    parser.add_argument("--learning_rate", type=float, default=2e-4, help="The learning rate.")
+    parser.add_argument("--per_device_train_batch_size", type=int, default=8, help="The batch size per device for training.")
+    parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help="The number of gradient accumulation steps.")
+    parser.add_argument("--logging_steps", type=int, default=10, help="The number of logging steps.")
+    parser.add_argument("--lora_r", type=int, default=16, help="The r value for LoraConfig.")
+    parser.add_argument("--lora_alpha", type=int, default=32, help="The alpha value for LoraConfig.")
+    parser.add_argument("--lora_dropout", type=float, default=0.05, help="The dropout value for LoraConfig.")
+    parser.add_argument("--lora_target_modules", nargs='+', default=["q_proj", "v_proj"], help="The target modules for LoraConfig.")
+    return parser.parse_args()
 
-# You can substitute this with a Hugging Face identifier for gemma3:270m if available
-# For now, we'll use a known-good small model.
-MODEL_NAME = args.model_name
-DATASET_PATH = args.dataset_path # Your new dataset
-OUTPUT_DIR = args.output_dir # The output directory for your trained model
+def load_model_and_tokenizer(model_name):
+    """Loads the model and tokenizer."""
+    quantization_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.bfloat16)
 
-# --- Optimizations for A100 ---
-torch.backends.cuda.matmul.allow_tf32 = True
-torch.backends.cudnn.allow_tf32 = True
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+        tokenizer.pad_token = tokenizer.eos_token
 
-# --- Configuration ---
-quantization_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.bfloat16)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_name,
+            quantization_config=quantization_config,
+            attn_implementation="flash_attention_2",
+            trust_remote_code=True
+        )
+        return model, tokenizer
+    except Exception as e:
+        print(f"Error loading model or tokenizer: {e}")
+        return None, None
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
-tokenizer.pad_token = tokenizer.eos_token
+def train_model(args, model, tokenizer):
+    """Trains the model."""
+    lora_config = LoraConfig(
+        r=args.lora_r,
+        lora_alpha=args.lora_alpha,
+        target_modules=args.lora_target_modules,
+        lora_dropout=args.lora_dropout,
+        bias="none",
+        task_type="CAUSAL_LM",
+    )
 
-model = AutoModelForCausalLM.from_pretrained(
-    MODEL_NAME,
-    quantization_config=quantization_config,
-    attn_implementation="flash_attention_2",
-    trust_remote_code=True
-)
+    try:
+        dataset = load_dataset("json", data_files=args.dataset_path, split="train")
+    except Exception as e:
+        print(f"Error loading dataset: {e}")
+        return
 
-lora_config = LoraConfig(
-    r=args.lora_r,
-    lora_alpha=args.lora_alpha,
-    target_modules=["q_proj", "v_proj"],
-    lora_dropout=args.lora_dropout,
-    bias="none",
-    task_type="CAUSAL_LM",
-)
+    def formatting_func(example):
+        return tokenizer.apply_chat_template(example["messages"], tokenize=False)
 
-# --- Load Dataset and Train ---
-dataset = load_dataset("json", data_files=DATASET_PATH, split="train")
+    trainer = SFTTrainer(
+        model=model,
+        tokenizer=tokenizer,
+        train_dataset=dataset,
+        peft_config=lora_config,
+        formatting_func=formatting_func,
+        args=TrainingArguments(
+            output_dir=args.output_dir,
+            num_train_epochs=args.num_train_epochs,
+            per_device_train_batch_size=args.per_device_train_batch_size,
+            gradient_accumulation_steps=args.gradient_accumulation_steps,
+            learning_rate=args.learning_rate,
+            logging_steps=args.logging_steps,
+            bf16=True,
+            optim="paged_adamw_8bit",
+        ),
+    )
 
-def formatting_func(example):
-    # The SFTTrainer expects a list of strings, where each string is the content of a message.
-    # We also need to apply the chat template.
-    # The tokenizer can do this for us.
-    return tokenizer.apply_chat_template(example["messages"], tokenize=False)
+    print("Starting fine-tuning...")
+    trainer.train()
+    trainer.save_model(args.output_dir)
+    print(f"Fine-tuning complete! Model adapter saved to {args.output_dir}")
 
-trainer = SFTTrainer(
-    model=model,
-    processing_class=tokenizer,
-    train_dataset=dataset,
-    peft_config=lora_config,
-    formatting_func=formatting_func,
+def main():
+    """Main function to run the fine-tuning script."""
+    args = parse_arguments()
 
-    args=TrainingArguments(
-        output_dir=OUTPUT_DIR,
-        num_train_epochs=args.num_train_epochs, # You might need more epochs for a small dataset
-        per_device_train_batch_size=args.per_device_train_batch_size,
-        gradient_accumulation_steps=args.gradient_accumulation_steps,
-        learning_rate=args.learning_rate,
-        logging_steps=args.logging_steps,
-        bf16=True,
-        optim="paged_adamw_8bit",
-    ),
-)
+    # --- Optimizations for A100 ---
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
 
-print("Starting fine-tuning...")
-trainer.train()
-trainer.save_model(OUTPUT_DIR)
-print(f"Fine-tuning complete! Model adapter saved to {OUTPUT_DIR}")
+    model, tokenizer = load_model_and_tokenizer(args.model_name)
+    if model and tokenizer:
+        train_model(args, model, tokenizer)
+
+if __name__ == "__main__":
+    main()
