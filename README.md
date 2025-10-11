@@ -1,6 +1,6 @@
 # MCP Servers and Fine-Tuning
 
-This repository contains a collection of MCP (Multi-purpose Co-pilot) servers and the scripts to fine-tune models for them.
+This repository contains a collection of MCP (Model Context Protocol) servers and the scripts to fine-tune models for them.
 
 ## Directory Structure
 
