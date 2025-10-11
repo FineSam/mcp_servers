@@ -8,7 +8,8 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
 /
 ├── servers/
 │   └── checkmk/
-│       ├── checkmk_mcp.py
+│       ├── checkmk_mcp_server.py
+│       ├── checkmk_mcp_client.py
 │       ├── encrypt_token.py
 │       ├── settings.yaml
 │       └── key.key
@@ -23,7 +24,8 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
 
 - **servers/**: Contains the MCP servers.
   - **checkmk/**: An MCP server for interacting with a Checkmk monitoring instance.
-    - `checkmk_mcp.py`: The main server script.
+    - `checkmk_mcp_server.py`: The main server script.
+    - `checkmk_mcp_client.py`: A client to interact with the Checkmk MCP server and an LLM.
     - `encrypt_token.py`: A script to generate an encryption key and encrypt the Checkmk token.
     - `settings.yaml`: Configuration file for the Checkmk server.
     - `key.key`: The encryption key (should be in .gitignore).
