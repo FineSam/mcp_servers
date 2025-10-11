@@ -1,10 +1,17 @@
 import ollama
 import requests
 import json
+import argparse
+
+# --- Argument Parser ---
+parser = argparse.ArgumentParser(description="A client to interact with the Checkmk MCP server and an LLM.")
+parser.add_argument("--mcp-url", type=str, default="http://localhost:8000", help="The URL of the Checkmk MCP server.")
+parser.add_argument("--ollama-model", type=str, default="gemma:2b", help="The name of the Ollama model to use.")
+args = parser.parse_args()
 
 # --- Configuration ---
-CHECKMK_MCP_URL = "http://localhost:8000"  # Assuming the MCP server runs on port 8000
-OLLAMA_MODEL = "gemma:2b"
+CHECKMK_MCP_URL = args.mcp_url
+OLLAMA_MODEL = args.ollama_model
 
 # --- MCP Client ---
 def get_mcp_tools():

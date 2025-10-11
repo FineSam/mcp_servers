@@ -41,8 +41,17 @@ uv python servers/checkmk/checkmk_mcp.py
 ## Running the Client
 
 To run the client, first make sure you have an Ollama server running.
-Then, from the root of the repository, run the client:
+Then, from the root of the repository, run the client. Here is an example command:
 
 ```bash
-uv python servers/checkmk/checkmk_mcp_client.py
+uv python servers/checkmk/checkmk_mcp_client.py \
+    --mcp-url "http://localhost:8000" \
+    --ollama-model "gemma:2b"
 ```
+
+### Arguments
+
+| Argument       | Description                               | Default                |
+| -------------- | ----------------------------------------- | ---------------------- |
+| `--mcp-url`      | The URL of the Checkmk MCP server.        | `http://localhost:8000` |
+| `--ollama-model` | The name of the Ollama model to use.      | `gemma:2b`             |
