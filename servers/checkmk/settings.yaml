@@ -1,0 +1,3 @@
+checkmk_url: http://localhost:8080
+checkmk_username: your_username
+checkmk_token: ENCRYPTED_TOKEN_PLACEHOLDER

@@ -8,7 +8,10 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
 /
 ├── servers/
 │   └── checkmk/
-│       └── server.py
+│       ├── checkmk_mcp.py
+│       ├── encrypt_token.py
+│       ├── settings.yaml
+│       └── key.key
 └── training/
     └── checkmk/
         ├── fine_tune.py
@@ -20,7 +23,10 @@ This repository contains a collection of MCP (Model Context Protocol) servers an
 
 - **servers/**: Contains the MCP servers.
   - **checkmk/**: An MCP server for interacting with a Checkmk monitoring instance.
-    - `server.py`: The main server script.
+    - `checkmk_mcp.py`: The main server script.
+    - `encrypt_token.py`: A script to generate an encryption key and encrypt the Checkmk token.
+    - `settings.yaml`: Configuration file for the Checkmk server.
+    - `key.key`: The encryption key (should be in .gitignore).
 - **training/**: Contains the scripts and resources for fine-tuning models.
   - **checkmk/**: Contains the fine-tuning script, data, and adapters for the Checkmk server.
     - `fine_tune.py`: The script to fine-tune a model.

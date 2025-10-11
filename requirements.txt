@@ -6,3 +6,5 @@ peft
 transformers
 trl
 bitsandbytes
+PyYAML
+cryptography

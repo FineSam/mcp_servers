@@ -6,17 +6,34 @@ This document provides instructions on how to run the Checkmk MCP server.
 
 Before running the server, make sure you have completed the installation steps in the root [README.md](../../README.md).
 
+## Configuration
+
+1.  **Create the `settings.yaml` file:**
+
+    In the `servers/checkmk` directory, create a `settings.yaml` file with the following content:
+
+    ```yaml
+    checkmk_url: http://localhost:8080
+    checkmk_username: your_username
+    checkmk_token: ENCRYPTED_TOKEN_PLACEHOLDER
+    ```
+
+2.  **Generate the encryption key and encrypt the token:**
+
+    Run the `encrypt_token.py` script to generate an encryption key and encrypt your Checkmk token. The script will save the key to `key.key` and print the encrypted token.
+
+    ```bash
+    uv python servers/checkmk/encrypt_token.py
+    ```
+
+3.  **Update `settings.yaml`:**
+
+    Replace `ENCRYPTED_TOKEN_PLACEHOLDER` in `settings.yaml` with the encrypted token you obtained in the previous step.
+
 ## Running the Server
 
-To run the Checkmk MCP server, first set the required environment variables:
+Once you have completed the configuration, you can run the server from the root of the repository:
 
 ```bash
-export CHECKMK_USERNAME="your_username"
-export CHECKMK_PASSWORD="your_password"
-```
-
-Then, from the root of the repository, run the server:
-
-```bash
-uv python servers/checkmk/server.py
+uv python servers/checkmk/checkmk_mcp.py
 ```
