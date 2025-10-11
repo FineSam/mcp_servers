@@ -1,0 +1,8 @@
+fastmcp
+requests
+torch
+datasets
+peft
+transformers
+trl
+bitsandbytes
