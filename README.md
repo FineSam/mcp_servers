@@ -27,10 +27,29 @@ This repository contains a collection of MCP (Multi-purpose Co-pilot) servers an
 
 ## Installation
 
+### 1. Install uv
+
+`uv` is a fast Python package installer and resolver, written in Rust. To install it on Linux, run:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+### 2. Create a Virtual Environment
+
+Create and activate a virtual environment with Python 3.11 using `uv`:
+
+```bash
+uv venv -p 3.11
+source .venv/bin/activate
+```
+
+### 3. Install Dependencies
+
 To install the dependencies, run the following command:
 
 ```bash
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 ```
 
 ## Usage
